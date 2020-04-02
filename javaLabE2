@@ -1,0 +1,71 @@
+import java.util.Scanner;
+
+class Cylinder {
+    private double height = 0.0;
+    private double radius = 0.0;
+
+    final static double PI = 3.14;
+
+    Cylinder() {
+    }
+
+    public double getHeight() {
+        return height;
+    }
+
+    public void setHeight(double h) {
+        height = h;
+    }
+
+    public double getRadius() {
+        return radius;
+    }
+
+    public void setRadius(double rad) {
+        radius = rad;
+    }
+
+    public double Surface() {
+        double left = 0.0;
+        double right = 0.0;
+
+        left = 2 * PI * radius * height;
+        right = 2 * PI * Math.pow(radius, 2);
+
+        return left + right;
+    }
+
+    public double Volume() {
+        return PI * Math.pow(radius, 2) * height;
+    }
+
+}
+
+public class TestCylinder {
+    public static void main(final String[] args) throws Exception {
+        Cylinder Arr[] = new Cylinder[10];
+
+        Scanner ReadData = new Scanner(System.in);
+
+        double H = 0.0, Rad = 0.0;
+        for (int i = 0; i < 10; i++) {
+            System.out.println("#" + (1 + i));
+            System.out.println("Enter Height: ");
+            H = ReadData.nextDouble();
+            System.out.println("Enter Radius: ");
+            Rad = ReadData.nextDouble();
+
+            Arr[i] = new Cylinder();
+            Arr[i].setHeight(H);
+            Arr[i].setRadius(Rad);
+        }
+
+        for (int i = 0; i < 10; i++) {
+            System.out.println("Height:" + Arr[i].getHeight());
+            System.out.println("Radius:" + Arr[i].getRadius());
+            System.out.println("Surface Area:" + Arr[i].Surface());
+            System.out.println("Volume:" + Arr[i].Volume());
+        }
+
+    }
+}
